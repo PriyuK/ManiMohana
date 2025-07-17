@@ -15,21 +15,4 @@ services:
         value: 'text/javascript'
       - path: '/*.jsx'
         name: 'Content-Type'
-        value: 'text/javascript'# render.yaml
-services:
-  # Be sure this matches your service type on Render (e.g., Static Site)
-  - type: static_site
-    name: my-cool-app # Change to your app's name
-    env: static # Or node, etc.
-    # Your build and publish settings go here
-    buildCommand: 'npm run build'
-    staticPublishPath: './build'
-
-    # This is the part that fixes the error
-    headers:
-      - path: '/*.js'
-        name: 'Content-Type'
-        value: 'text/javascript'
-      - path: '/*.jsx'
-        name: 'Content-Type'
         value: 'text/javascript'
