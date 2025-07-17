@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg-mesh-gradient {
+  background: radial-gradient(circle at 20% 40%, #a78bfa 0%, transparent 60%),
+              radial-gradient(circle at 80% 60%, #34d399 0%, transparent 60%),
+              radial-gradient(circle at 60% 20%, #60a5fa 0%, transparent 60%),
+              radial-gradient(circle at 40% 80%, #f472b6 0%, transparent 60%),
+              radial-gradient(circle at 70% 70%, #fbbf24 0%, transparent 60%);
+  background-blend-mode: lighten;
+}
+.animate-mesh {
+  animation: meshMove 18s ease-in-out infinite alternate;
+}
+@keyframes meshMove {
+  0% {
+    background-position:
+      20% 40%, 80% 60%, 60% 20%, 40% 80%, 70% 70%;
+  }
+  50% {
+    background-position:
+      30% 50%, 70% 50%, 50% 30%, 50% 70%, 60% 80%;
+  }
+  100% {
+    background-position:
+      20% 40%, 80% 60%, 60% 20%, 40% 80%, 70% 70%;
+  }
+} 

@@ -1,0 +1,90 @@
+.resin-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.swirl-svg-wrapper {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.swirl-svg-morph {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.swirl-svg-morph path:first-of-type {
+  transform-origin: 50% 50%;
+  animation: swirl-morph-svg 2.5s ease-in-out infinite;
+}
+
+@keyframes swirl-morph-svg {
+  0% {
+    transform: scale(1) skewX(0deg) skewY(0deg);
+    filter: blur(0px) brightness(1);
+  }
+  20% {
+    transform: scale(1.05, 0.95) skewX(2deg) skewY(-2deg);
+    filter: blur(1px) brightness(1.1);
+  }
+  40% {
+    transform: scale(0.97, 1.03) skewX(-2deg) skewY(2deg);
+    filter: blur(0.5px) brightness(0.95);
+  }
+  60% {
+    transform: scale(1.03, 0.97) skewX(1deg) skewY(-1deg);
+    filter: blur(1px) brightness(1.05);
+  }
+  80% {
+    transform: scale(0.98, 1.02) skewX(-1deg) skewY(1deg);
+    filter: blur(0.5px) brightness(1);
+  }
+  100% {
+    transform: scale(1) skewX(0deg) skewY(0deg);
+    filter: blur(0px) brightness(1);
+  }
+}
+
+@keyframes swirl-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.resin-loader-text {
+  margin-top: 20px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: 'Segoe UI', sans-serif;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+} 
