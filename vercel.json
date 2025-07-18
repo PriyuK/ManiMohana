@@ -1,5 +1,4 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "ignoreCommand": "echo 'Ignore backend during build'"
+  "outputDirectory": "dist"
 }
