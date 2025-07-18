@@ -19,10 +19,34 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/admin', adminRoutes);
 
-const PORT = process.env.PORT || 5000;
+// Connect to MongoDB
+let cachedConnection = null;
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
+async function connectToDatabase() {
+  if (cachedConnection) {
+    return cachedConnection;
+  }
+  
+  try {
+    const connection = await mongoose.connect(process.env.MONGO_URI);
+    cachedConnection = connection;
+    return connection;
+  } catch (error) {
+    console.error('Database connection error:', error);
+    throw error;
+  }
+}
+
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  connectToDatabase().then(() => {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
-  .catch(err => console.error(err));
+  });
+}
+
+// For Vercel serverless
+export default async function handler(req, res) {
+  await connectToDatabase();
+  return app(req, res);
+}
