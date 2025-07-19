@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "vite.config.js", "use": "@vercel/static-build" },
+    { "src": "api/backend/index.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/backend/index.js" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
